@@ -1,0 +1,9 @@
+# Direct project dependencies
+#
+# Python: 3.10.21
+# CUDA-enabled PyTorch build: cu126
+
+--extra-index-url https://download.pytorch.org/whl/cu126
+
+torch==2.7.1+cu126
+transformers==4.40.1
