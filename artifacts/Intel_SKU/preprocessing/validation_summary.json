@@ -1,0 +1,26 @@
+{
+  "source_rows": 26114,
+  "source_skus": 86,
+  "distribution_centers": [
+    "ALPHA",
+    "BETA",
+    "DELTA",
+    "EPSILON",
+    "GAMMA"
+  ],
+  "aggregate_weeks": 187,
+  "aggregate_cells": 16082,
+  "aggregate_non_missing_cells": 7721,
+  "aggregate_missing_cells": 8361,
+  "aggregate_zero_cells": 300,
+  "aggregate_source_records_matched": 7421,
+  "aggregate_cells_without_source_record": 300,
+  "aggregate_mismatches": 0,
+  "center_observed_rows": 26114,
+  "center_panel_rows": 80410,
+  "center_panel_observed_rows": 26114,
+  "center_panel_missing_within_lifecycle": 12491,
+  "center_panel_outside_lifecycle": 41805,
+  "static_attributes_consistent": true,
+  "negative_demand_or_forecast_values": 0
+}
