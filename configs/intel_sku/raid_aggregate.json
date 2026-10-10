@@ -1,0 +1,70 @@
+{
+  "experiment": {
+    "name": "intel_sku_aggregate_raid",
+    "setting": "aggregate",
+    "forecast_window_weeks": 13,
+    "test_eligible_skus": 35,
+    "random_seed": 42,
+    "training_protocol": "sku_held_out_cold_start_simulation"
+  },
+  "data": {
+    "aggregate_demand_path": "data/Intel_SKU/processed/aggregate/aggregate_sku_weekly_demand.csv",
+    "sku_metadata_path": "data/Intel_SKU/processed/aggregate/sku_metadata.csv",
+    "cases_path": "artifacts/Intel_SKU/evaluation/launch_evaluation_cases.csv",
+    "exclusions_path": "artifacts/Intel_SKU/evaluation/launch_evaluation_exclusions.csv",
+    "sku_column": "sku",
+    "week_column": "week",
+    "target_column": "customer_orders",
+    "launch_column": "start",
+    "retrieval_feature_columns": [
+      "Product Offering",
+      "Generation",
+      "ASP Group"
+    ],
+    "embedding_path": "artifacts/Intel_SKU/embeddings/intel_sku_bge_m3.npy",
+    "embedding_index_path": "artifacts/Intel_SKU/embeddings/intel_sku_bge_m3_index.json"
+  },
+  "model": {
+    "embedding_dim": 1024,
+    "bottleneck_dim": 16,
+    "neighbors_k": 20,
+    "gat_heads": 4,
+    "gat_layers": 2,
+    "dit_hidden_dim": 64,
+    "dit_layers": 4,
+    "dit_heads": 4,
+    "dit_dropout": 0.1,
+    "time_embedding_dim": 128,
+    "diffusion_train_steps": 50,
+    "diffusion_inference_steps": 10,
+    "beta_start": 0.0001,
+    "beta_end": 0.02,
+    "shape_clamp": 10.0,
+    "epsilon": 1e-06,
+    "base_loss_weight": 0.01,
+    "gate_bias_init": -3.0
+  },
+  "training": {
+    "epochs": 150,
+    "batch_size": 16,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0001,
+    "patience": 20,
+    "gradient_clip_norm": 1.0
+  },
+  "evaluation": {
+    "num_samples": 20,
+    "metrics": [
+      "MAE",
+      "RMSE",
+      "sMAPE",
+      "WAPE"
+    ]
+  },
+  "outputs": {
+    "split_dir": "artifacts/Intel_SKU/splits/raid_aggregate",
+    "checkpoint_dir": "artifacts/Intel_SKU/checkpoints/raid_aggregate",
+    "prediction_dir": "outputs/Intel_SKU/raid_aggregate",
+    "training_log": "artifacts/Intel_SKU/checkpoints/raid_aggregate/training_history.csv"
+  }
+}
