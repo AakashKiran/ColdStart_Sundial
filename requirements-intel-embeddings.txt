@@ -1,0 +1,13 @@
+# Dependencies for generating Intel SKU metadata embeddings.
+# Recommended Python version: 3.10
+#
+# Install from the repository root:
+#   python -m pip install -r requirements-intel-embeddings.txt
+#
+# This lists direct dependencies; it is not a fully pinned lockfile.
+# After confirming the environment works, capture exact versions with:
+#   python -m pip freeze > artifacts/Intel_SKU/embeddings/environment-freeze.txt
+
+numpy
+pandas
+sentence-transformers
