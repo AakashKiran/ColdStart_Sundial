@@ -1,0 +1,36 @@
+{
+  "experiment": {
+    "name": "intel_sku_aggregate_launch_cold_start",
+    "setting": "aggregate",
+    "target_column": "customer_orders",
+    "forecast_window_weeks": 13
+  },
+  "data": {
+    "aggregate_demand_path": "data/Intel_SKU/processed/aggregate/aggregate_sku_weekly_demand.csv",
+    "sku_metadata_path": "data/Intel_SKU/processed/aggregate/sku_metadata.csv",
+    "week_column": "week",
+    "sku_column": "sku",
+    "launch_week_column": "start",
+    "lifecycle_end_column": "end",
+    "retrieval_feature_columns": [
+      "Product Offering",
+      "Generation",
+      "ASP Group"
+    ]
+  },
+  "evaluation": {
+    "require_complete_forecast_window": true,
+    "require_prelaunch_history": true,
+    "exclude_target_from_donors": true,
+    "donor_launch_rule": "strictly_before_origin",
+    "history_rule": "week_strictly_before_origin",
+    "minimum_donor_history_observations": 1,
+    "use_lifecycle_end_as_donor_filter": false
+  },
+  "outputs": {
+    "directory": "artifacts/Intel_SKU/evaluation",
+    "cases_file": "launch_evaluation_cases.csv",
+    "exclusions_file": "launch_evaluation_exclusions.csv",
+    "summary_file": "launch_evaluation_summary.json"
+  }
+}

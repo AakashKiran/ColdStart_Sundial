@@ -1,0 +1,32 @@
+{
+  "protocol": "intel_sku_aggregate_launch_cold_start",
+  "setting": "aggregate",
+  "forecast_window_weeks": 13,
+  "dataset_week_range": [
+    1,
+    187
+  ],
+  "total_skus": 86,
+  "eligible_target_skus": 59,
+  "excluded_target_skus": 27,
+  "unique_eligible_origins": 23,
+  "exclusion_reason_counts": {
+    "no_prelaunch_history": 25,
+    "forecast_window_exceeds_dataset": 2,
+    "incomplete_target_forecast_window": 2
+  },
+  "config_path": "configs/intel_sku/aggregate_launch_evaluation.json",
+  "artifacts": {
+    "cases": "launch_evaluation_cases.csv",
+    "exclusions": "launch_evaluation_exclusions.csv"
+  },
+  "notes": [
+    "A target SKU's own demand is not used as model input.",
+    "Donor SKUs must have launched strictly before the target origin.",
+    "Donor histories include only weeks strictly before the target origin.",
+    "Missing demand remains missing; no missing values are imputed to zero.",
+    "Lifecycle end is not used to filter donors.",
+    "Cases require a complete observed target forecast window when configured.",
+    "Exclusion reason counts can sum to more than excluded_target_skus because a case can have multiple reasons."
+  ]
+}
